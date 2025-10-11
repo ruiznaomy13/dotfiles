@@ -6,10 +6,14 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<Left>',  ':echom "Use h to move!!"<CR>')
+vim.keymap.set('n', '<Right>', ':echom "Use l to move!!"<CR>')
+vim.keymap.set('n', '<Up>',    ':echom "Use k to move!!"<CR>')
+vim.keymap.set('n', '<Down>',  ':echom "Use j to move!!"<CR>')
+vim.keymap.set('i', '<Left>',  '<C-o>:echom "Use h to move!!"<CR>')
+vim.keymap.set('i', '<Right>', '<C-o>:echom "Use l to move!!"<CR>')
+vim.keymap.set('i', '<Up>',    '<C-o>:echom "Use k to move!!"<CR>')
+vim.keymap.set('i', '<Down>',  '<C-o>:echom "Use j to move!!"<CR>')
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
