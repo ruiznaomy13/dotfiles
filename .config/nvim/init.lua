@@ -14,6 +14,7 @@ vim.keymap.set('i', '<Left>',  '<C-o>:echom "Use h to move!!"<CR>')
 vim.keymap.set('i', '<Right>', '<C-o>:echom "Use l to move!!"<CR>')
 vim.keymap.set('i', '<Up>',    '<C-o>:echom "Use k to move!!"<CR>')
 vim.keymap.set('i', '<Down>',  '<C-o>:echom "Use j to move!!"<CR>')
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
@@ -35,16 +36,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
 	spec = {
-	    {
-	      "folke/tokyonight.nvim",
-	      config = function()
-		  require('tokyonight').setup {
-		    style = "storm",
-		    transparent = true
-		  }
-		  vim.cmd.colorscheme "tokyonight" 
-	      end
-	    },
+	    { import = "config.plugins" }
 	},
 	change_detection = {
 		enabled = false,
