@@ -1,24 +1,30 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
+vim.g.have_nerd_font = true
+
+require 'options'
+require 'keymaps'
+require 'lazy-bootstrap'
+
 vim.opt.shiftwidth = 4
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set('n', '<Left>',  ':echom "Use h to move!!"<CR>')
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Left>', ':echom "Use h to move!!"<CR>')
 vim.keymap.set('n', '<Right>', ':echom "Use l to move!!"<CR>')
-vim.keymap.set('n', '<Up>',    ':echom "Use k to move!!"<CR>')
-vim.keymap.set('n', '<Down>',  ':echom "Use j to move!!"<CR>')
-vim.keymap.set('i', '<Left>',  '<C-o>:echom "Use h to move!!"<CR>')
+vim.keymap.set('n', '<Up>', ':echom "Use k to move!!"<CR>')
+vim.keymap.set('n', '<Down>', ':echom "Use j to move!!"<CR>')
+vim.keymap.set('i', '<Left>', '<C-o>:echom "Use h to move!!"<CR>')
 vim.keymap.set('i', '<Right>', '<C-o>:echom "Use l to move!!"<CR>')
-vim.keymap.set('i', '<Up>',    '<C-o>:echom "Use k to move!!"<CR>')
-vim.keymap.set('i', '<Down>',  '<C-o>:echom "Use j to move!!"<CR>')
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+vim.keymap.set('i', '<Up>', '<C-o>:echom "Use k to move!!"<CR>')
+vim.keymap.set('i', '<Down>', '<C-o>:echom "Use j to move!!"<CR>')
+vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>')
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
@@ -34,12 +40,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.runtimepath:prepend(lazypath)
-require("lazy").setup({
-	spec = {
-	    { import = "config.plugins" }
-	},
-	change_detection = {
-		enabled = false,
-		notify = false,
-	},
-})
+require('lazy').setup {
+  spec = {
+    { import = 'plugins' },
+  },
+  change_detection = {
+    enabled = false,
+    notify = false,
+  },
+}
